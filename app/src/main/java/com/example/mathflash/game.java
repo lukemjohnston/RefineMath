@@ -18,4 +18,9 @@ public class game extends AppCompatActivity {
         Intent intent = new Intent(this, game.class);
         startActivity(intent);
     }
+
+    public void returnMain(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }
