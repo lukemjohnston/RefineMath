@@ -2,34 +2,35 @@
     <!-- Base application theme. -->
 
 
-    <style name="Theme.MathFlash" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.MathFlash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple1</item>
-        <item name="colorPrimaryVariant">@color/green1</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="backgroundColor">@color/background</item>
+        <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal1</item>
-        <item name="colorSecondaryVariant">@color/orange1</item>
+        <item name="colorSecondary">@color/teal</item>
+        <item name="colorSecondaryVariant">@color/orange</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorOnPrimary</item>
         <!-- Customize your theme here. -->
     </style>
 
 
     <style name="Button.purple" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">@color/purple1</item>
+        <item name="colorPrimary">@color/purple</item>
     </style>
 
     <style name="Button.orange" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">@color/orange1</item>
+        <item name="colorPrimary">@color/orange</item>
     </style>
 
     <style name="Button.teal" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">@color/teal1</item>
+        <item name="colorPrimary">@color/teal</item>
     </style>
 
     <style name="Button.green" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">@color/green1</item>
+        <item name="colorPrimary">@color/green</item>
     </style>
 </resources>
