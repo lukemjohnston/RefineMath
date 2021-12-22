@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MathFlash</string>
+    <string name="mathFormula">9 + 10 = ?</string>
 </resources>
