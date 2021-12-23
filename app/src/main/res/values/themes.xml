@@ -33,4 +33,13 @@
     <style name="Button.green" parent="ThemeOverlay.AppCompat">
         <item name="colorPrimary">@color/green</item>
     </style>
+
+    <style name="Theme.MathFlash.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MathFlash.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MathFlash.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
