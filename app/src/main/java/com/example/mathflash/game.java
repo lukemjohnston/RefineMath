@@ -15,14 +15,14 @@ public class game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        int var = (int) Math.floor(Math.random() * (3 - 1 + 1) + 1);
+        int var = (int) Math.floor(Math.random() * (4 - 1 + 1) + 1);
         int min = 1, max = 2, ans = 0;
 
         if (var < 3) {
             min = 1;
             max = 50;
         }
-        if (var == 3) {
+        if (var >= 3) {
             min = 1;
             max = 12;
         }
@@ -30,8 +30,6 @@ public class game extends AppCompatActivity {
         //creates a random math formula
         int number1 = (int) Math.floor(Math.random() * (max - min + 1) + min);
         int number2 = (int) Math.floor(Math.random() * (max - min + 1) + min);
-        String n1 = String.valueOf(number1);
-        String n2 = String.valueOf(number2);
         String v = "$";
 
         if (var == 1) {      //addition
@@ -46,6 +44,15 @@ public class game extends AppCompatActivity {
             ans = number1 * number2;
             v = "x";
         }
+        if (var == 4) {      //division
+            ans = number1 * number2;
+            int temp = number1;
+            number1 = ans;
+            ans = temp;
+            v = "÷";
+        }
+        String n1 = String.valueOf(number1);
+        String n2 = String.valueOf(number2);
         String formula = n1 + " " + v + " " + n2 + " =  ?";
         TextView textView0 = (TextView) findViewById(R.id.mathFormula);
         textView0.setText(formula);
@@ -160,10 +167,14 @@ public class game extends AppCompatActivity {
             }
         }
 
+        String a = String.valueOf(ans);
+        String fullFormula = n1 + " " + v + " " + n2 + " =  "+a;
+
         correct_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), correct.class);
+                Intent intent = new Intent(v.getContext(), correct.class);
+                intent.putExtra("fullFormula", fullFormula);
                 startActivity(intent);
             }
         });
@@ -171,7 +182,8 @@ public class game extends AppCompatActivity {
         wrong_button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), wrong.class);
+                Intent intent = new Intent(v.getContext(), wrong.class);
+                intent.putExtra("fullFormula", fullFormula);
                 startActivity(intent);
             }
         });
@@ -179,7 +191,8 @@ public class game extends AppCompatActivity {
         wrong_button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), wrong.class);
+                Intent intent = new Intent(v.getContext(), wrong.class);
+                intent.putExtra("fullFormula", fullFormula);
                 startActivity(intent);
             }
         });
@@ -187,7 +200,8 @@ public class game extends AppCompatActivity {
         wrong_button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), wrong.class);
+                Intent intent = new Intent(v.getContext(), wrong.class);
+                intent.putExtra("fullFormula", fullFormula);
                 startActivity(intent);
             }
         });
