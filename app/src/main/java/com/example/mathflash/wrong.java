@@ -30,11 +30,14 @@ public class wrong extends AppCompatActivity {
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), game.class);
+                Intent intent;
+                if (finalRCount == 31)
+                    intent = new Intent(getApplicationContext(), end_screen.class);
+                else
+                    intent = new Intent(getApplicationContext(), game.class);
                 intent.putExtra("rCount", finalRCount);
                 intent.putExtra("cCount", cCount);
                 startActivity(intent);
-
             }
 
         }, 1500);

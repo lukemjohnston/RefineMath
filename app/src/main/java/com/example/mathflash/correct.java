@@ -27,8 +27,6 @@ public class correct extends AppCompatActivity {
         cTextview = (TextView)findViewById(R.id.fullFormula);
         cTextview.setText(getIntent().getStringExtra("fullFormula"));
 
-        //RoundCount = (TextView)findViewById(R.id.fullFormula);
-
 
         final Handler h = new Handler();
         int finalRCount = rCount;
@@ -36,7 +34,11 @@ public class correct extends AppCompatActivity {
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), game.class);
+                Intent intent;
+                if (finalRCount == 31)
+                    intent = new Intent(getApplicationContext(), end_screen.class);
+                else
+                    intent = new Intent(getApplicationContext(), game.class);
                 intent.putExtra("rCount", finalRCount);
                 intent.putExtra("cCount", finalCCount);
                 startActivity(intent);

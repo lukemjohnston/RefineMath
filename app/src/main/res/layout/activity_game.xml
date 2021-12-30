@@ -65,10 +65,11 @@
 
     <TextView
         android:id="@+id/mathFormula"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="384dp"
+        android:layout_height="107dp"
         android:layout_marginTop="100dp"
         android:text="@string/mathFormula"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="70sp"
         android:textStyle="bold"
