@@ -15,6 +15,14 @@ public class game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        Intent mIntent = getIntent();
+        int rCount = mIntent.getIntExtra("rCount", 0);
+        int cCount = mIntent.getIntExtra("cCount", 0);
+
+        String round = String.valueOf(rCount);
+        TextView roundCount = (TextView)findViewById(R.id.roundCount);
+        roundCount.setText(round + "/30");
+
         int var = (int) Math.floor(Math.random() * (4 - 1 + 1) + 1);
         int min = 1, max = 2, ans = 0;
 
@@ -175,6 +183,8 @@ public class game extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), correct.class);
                 intent.putExtra("fullFormula", fullFormula);
+                intent.putExtra("rCount", rCount);
+                intent.putExtra("cCount", cCount);
                 startActivity(intent);
             }
         });
@@ -184,6 +194,8 @@ public class game extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), wrong.class);
                 intent.putExtra("fullFormula", fullFormula);
+                intent.putExtra("rCount", rCount);
+                intent.putExtra("cCount", cCount);
                 startActivity(intent);
             }
         });
@@ -193,6 +205,8 @@ public class game extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), wrong.class);
                 intent.putExtra("fullFormula", fullFormula);
+                intent.putExtra("rCount", rCount);
+                intent.putExtra("cCount", cCount);
                 startActivity(intent);
             }
         });
@@ -202,6 +216,8 @@ public class game extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), wrong.class);
                 intent.putExtra("fullFormula", fullFormula);
+                intent.putExtra("rCount", rCount);
+                intent.putExtra("cCount", cCount);
                 startActivity(intent);
             }
         });
