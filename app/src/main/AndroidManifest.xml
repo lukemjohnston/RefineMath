@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MathFlash">
-        <activity android:name=".end_screen"></activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/settings"></activity>
+        <activity android:name=".end_screen" />
         <activity android:name=".wrong" />
         <activity android:name=".correct" />
         <activity android:name=".game" />

@@ -1,0 +1,50 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <PreferenceCategory android:title="@string/MathDifficulty"
+        >
+
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="add"
+            android:title="@string/add"
+            android:summaryOff="Addition will not be included in the game"
+            android:summaryOn="Addition will be included in the game"/>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="sub"
+            android:title="@string/subt"
+            android:summaryOff="Subtraction will not be included in the game"
+            android:summaryOn="Subtraction will be included in the game"/>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="mult"
+            android:title="@string/mult"
+            android:summaryOff="Multiplication will not be included in the game"
+            android:summaryOn="Multiplication will be includd in the game"/>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="div"
+            android:title="@string/div"
+            app:summaryOff="Division will not be included in the game"
+            android:summaryOn="Division will be included in the game"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/audio">
+
+        <SeekBarPreference
+            android:defaultValue=""
+            android:key="Music_Volume"
+            android:title="@string/musicVol" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="mute"
+            android:title="@string/mute" />
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

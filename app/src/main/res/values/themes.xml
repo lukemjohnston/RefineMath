@@ -9,7 +9,7 @@
         <item name="backgroundColor">@color/background</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal</item>
+        <item name="colorSecondary">@color/purple</item>
         <item name="colorSecondaryVariant">@color/orange</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
@@ -20,18 +20,22 @@
 
     <style name="Button.purple" parent="ThemeOverlay.AppCompat">
         <item name="colorPrimary">@color/purple</item>
+        <item name="colorOnPrimary">@color/white</item>
     </style>
 
     <style name="Button.orange" parent="ThemeOverlay.AppCompat">
         <item name="colorPrimary">@color/orange</item>
+        <item name="colorOnPrimary">@color/white</item>
     </style>
 
     <style name="Button.teal" parent="ThemeOverlay.AppCompat">
         <item name="colorPrimary">@color/teal</item>
+        <item name="colorOnPrimary">@color/white</item>
     </style>
 
     <style name="Button.green" parent="ThemeOverlay.AppCompat">
         <item name="colorPrimary">@color/green</item>
+        <item name="colorOnPrimary">@color/white</item>
     </style>
 
     <style name="Theme.MathFlash.NoActionBar">
@@ -39,7 +43,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.MathFlash.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.MathFlash.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimaryVariant">@color/white</item>
+    </style>
+
 
     <style name="Theme.MathFlash.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
