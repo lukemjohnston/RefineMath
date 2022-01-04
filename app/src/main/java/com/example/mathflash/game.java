@@ -1,8 +1,12 @@
 package com.example.mathflash;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,6 +18,9 @@ public class game extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         Intent mIntent = getIntent();
         int rCount = mIntent.getIntExtra("rCount", 0);
@@ -61,7 +68,7 @@ public class game extends AppCompatActivity {
         }
         String n1 = String.valueOf(number1);
         String n2 = String.valueOf(number2);
-        String formula = n1 + " " + v + " " + n2 + " =  ?";
+        String formula = n1 + " " + v + " " + n2;
         TextView textView0 = (TextView) findViewById(R.id.mathFormula);
         textView0.setText(formula);
 
@@ -223,6 +230,23 @@ public class game extends AppCompatActivity {
         });
 
 
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_home:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 
