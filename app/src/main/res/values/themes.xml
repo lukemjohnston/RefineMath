@@ -9,7 +9,7 @@
         <item name="backgroundColor">@color/background</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/purple</item>
+        <item name="colorSecondary">@color/teal</item>
         <item name="colorSecondaryVariant">@color/orange</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->

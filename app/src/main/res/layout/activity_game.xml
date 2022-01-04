@@ -7,6 +7,10 @@
     android:background="@color/background"
     tools:context=".game">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
     <Button
         android:id="@+id/option1"
         android:layout_width="140dp"

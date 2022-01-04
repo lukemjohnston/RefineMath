@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#f7ede2</color>
-    <color name="accent">#BCA68E</color>
+    <color name="background">#FFFFFF</color>
+    <color name="backgroundOld">#f7ede2</color>
+    <color name="accent">#9B78C6</color>
+    <color name="accentOld">#BCA68E</color>
     <color name="correct">#6A8C42</color>
     <color name="wrong">#ED7751</color>
     <color name="purple">#9B78C6</color>
