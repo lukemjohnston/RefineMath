@@ -1,25 +1,30 @@
 package com.example.mathflash;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
-import java.util.Objects;
+import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity {
+    private Button play;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        play=findViewById(R.id.playButton);
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyMainFragment myMainFragment = new MyMainFragment();
+                myMainFragment.show(getFragmentManager(), "MyFragment");
+
+            }
+        });
     }
 
 
