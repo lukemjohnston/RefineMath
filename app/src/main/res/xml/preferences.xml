@@ -3,9 +3,7 @@
 
 
 
-    <PreferenceCategory android:title="@string/MathDifficulty"
-        >
-
+    <PreferenceCategory android:title="@string/MathDifficulty">
 
         <SwitchPreference
             android:defaultValue="true"
@@ -31,6 +29,12 @@
             android:title="@string/div"
             app:summaryOff="Division will not be included in the game"
             android:summaryOn="Division will be included in the game"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="negatives"
+            android:title="@string/neg"
+            android:summaryOff="Answers can not be negative"
+            android:summaryOn="Answers can be negative"/>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/audio">

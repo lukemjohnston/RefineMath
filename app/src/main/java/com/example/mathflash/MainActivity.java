@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    int rCount = 30;
+    int rCount = 1;
     int cCount = 0;
     public void startGame(View v) {
         Intent intent = new Intent(v.getContext(), game.class);

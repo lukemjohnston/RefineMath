@@ -10,6 +10,7 @@
     <string name="subt">Subtraction</string>
     <string name="mult">Multiplication</string>
     <string name="div">Division</string>
+    <string name="neg">Negative Answers</string>
     <string name="musicVol">Music Volume</string>
     <string name="mute">Mute</string>
 

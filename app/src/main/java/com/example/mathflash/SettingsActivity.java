@@ -24,7 +24,6 @@ public class SettingsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         if (savedInstanceState == null) {
 
             getSupportFragmentManager()
@@ -33,19 +32,8 @@ public class SettingsActivity extends AppCompatActivity {
                     .commit();
         }
 
-
-       /* ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }*/
-
-        //Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        container.removeAllViews();
-        return inflater.inflate(R.layout.settings_activity, container, false);
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);

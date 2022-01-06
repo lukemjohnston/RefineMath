@@ -2,8 +2,10 @@ package com.example.mathflash;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,18 +21,53 @@ public class game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        createFormula();
+    }
+
+
+    public void createFormula() {
         Intent mIntent = getIntent();
         int rCount = mIntent.getIntExtra("rCount", 0);
         int cCount = mIntent.getIntExtra("cCount", 0);
 
+        PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences sp =  PreferenceManager.getDefaultSharedPreferences(this);
+
+        boolean addTrue = sp.getBoolean("add", true);
+        boolean subTrue = sp.getBoolean("sub", true);
+        boolean multTrue = sp.getBoolean("mult", true);
+        boolean divTrue = sp.getBoolean("div", true);
+
+
+
         String round = String.valueOf(rCount);
-        TextView roundCount = (TextView)findViewById(R.id.roundCount);
+        TextView roundCount = (TextView) findViewById(R.id.roundCount);
         roundCount.setText(round + "/30");
 
-        int var = (int) Math.floor(Math.random() * (4 - 1 + 1) + 1);
+        int var = 0;
+        boolean creating = true;
+
+        while(creating){
+            var = (int) Math.floor(Math.random() * (4 - 1 + 1) + 1);
+
+            if ((var == 1) && (addTrue == true)) {      //addition
+                creating = false;
+            }
+            else if ((var == 2) && (subTrue == true)) {      //subtraction
+                creating = false;
+            }
+            else if ((var == 3) && (multTrue == true)) {      //multiplication
+                creating = false;
+            }
+            else if ((var == 4) && (divTrue == true)) {      //division
+                creating = false;
+            }
+        }
+
         int min = 1, max = 2, ans = 0;
 
         if (var < 3) {
@@ -47,11 +84,18 @@ public class game extends AppCompatActivity {
         int number2 = (int) Math.floor(Math.random() * (max - min + 1) + min);
         String v = "$";
 
+        boolean negAllow = sp.getBoolean("negatives", false);
+
         if (var == 1) {      //addition
             ans = number1 + number2;
             v = "+";
         }
         if (var == 2) {      //subtraction
+            if ((negAllow == false) && (number2 > number1)) {
+                int temp = number1;
+                number1 = number2;
+                number2 = temp;
+            }
             ans = number1 - number2;
             v = "-";
         }
@@ -73,6 +117,14 @@ public class game extends AppCompatActivity {
         textView0.setText(formula);
 
 
+        String a = String.valueOf(ans);
+        String fullFormula = n1 + " " + v + " " + n2 + " =  "+a;
+
+        configureButtons(ans, rCount, cCount, fullFormula);
+    }
+
+
+    private void configureButtons(int ans, int rCount, int cCount, String fullFormula) {
         Button correct_button = (Button) findViewById(R.id.option1);
         Button wrong_button1 = (Button) findViewById(R.id.option2);
         Button wrong_button2 = (Button) findViewById(R.id.option3);
@@ -113,7 +165,7 @@ public class game extends AppCompatActivity {
         }
 
 
-            //puts close answers in the other buttons
+        //puts close answers in the other buttons
         int scramble = (int)Math.floor(Math.random()*(3-1+1)+1);
         if (scramble > 0) {
             if (correctButton != 1){
@@ -182,9 +234,6 @@ public class game extends AppCompatActivity {
             }
         }
 
-        String a = String.valueOf(ans);
-        String fullFormula = n1 + " " + v + " " + n2 + " =  "+a;
-
         correct_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -229,8 +278,8 @@ public class game extends AppCompatActivity {
             }
         });
 
-
     }
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
