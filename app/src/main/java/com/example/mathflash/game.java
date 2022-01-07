@@ -21,7 +21,6 @@ public class game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -33,6 +32,16 @@ public class game extends AppCompatActivity {
         Intent mIntent = getIntent();
         int rCount = mIntent.getIntExtra("rCount", 0);
         int cCount = mIntent.getIntExtra("cCount", 0);
+
+        CharSequence gameMode = mIntent.getCharSequenceExtra("gameMode");
+        CharSequence gameLength = mIntent.getCharSequenceExtra("gameLength");
+
+        TextView temp1 = (TextView) findViewById(R.id.textView6);
+        temp1.setText(gameMode);
+        TextView temp2 = (TextView) findViewById(R.id.textView7);
+        temp2.setText(gameLength);
+
+
 
         PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences sp =  PreferenceManager.getDefaultSharedPreferences(this);
