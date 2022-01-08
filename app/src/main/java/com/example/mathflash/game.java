@@ -6,6 +6,7 @@ import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +15,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class game extends AppCompatActivity {
+    public int rCount, cCount, maxRound;
+    public String gameMode, gameLength, fullFormula;
+    public Button correct_button, wrong_button1, wrong_button2, wrong_button3;
 
 
     @Override
@@ -30,17 +34,10 @@ public class game extends AppCompatActivity {
 
     public void createFormula() {
         Intent mIntent = getIntent();
-        int rCount = mIntent.getIntExtra("rCount", 0);
-        int cCount = mIntent.getIntExtra("cCount", 0);
-
-        CharSequence gameMode = mIntent.getCharSequenceExtra("gameMode");
-        CharSequence gameLength = mIntent.getCharSequenceExtra("gameLength");
-
-        TextView temp1 = (TextView) findViewById(R.id.textView6);
-        temp1.setText(gameMode);
-        TextView temp2 = (TextView) findViewById(R.id.textView7);
-        temp2.setText(gameLength);
-
+        rCount = mIntent.getIntExtra("rCount", 0);
+        cCount = mIntent.getIntExtra("cCount", 0);
+        gameMode = mIntent.getStringExtra("gameMode");
+        gameLength = mIntent.getStringExtra("gameLength");
 
 
         PreferenceManager.getDefaultSharedPreferences(this);
@@ -52,10 +49,16 @@ public class game extends AppCompatActivity {
         boolean divTrue = sp.getBoolean("div", true);
 
 
+        if (gameLength.equals("10 Rounds"))
+            maxRound = 10;
+        if (gameLength.equals("20 Rounds"))
+            maxRound = 20;
+        if (gameLength.equals("30 Rounds"))
+            maxRound = 30;
 
         String round = String.valueOf(rCount);
         TextView roundCount = (TextView) findViewById(R.id.roundCount);
-        roundCount.setText(round + "/30");
+        roundCount.setText(round + "/" + maxRound);
 
         int var = 0;
         boolean creating = true;
@@ -127,17 +130,17 @@ public class game extends AppCompatActivity {
 
 
         String a = String.valueOf(ans);
-        String fullFormula = n1 + " " + v + " " + n2 + " =  "+a;
+        fullFormula = n1 + " " + v + " " + n2 + " =  "+a;
 
         configureButtons(ans, rCount, cCount, fullFormula);
     }
 
 
     private void configureButtons(int ans, int rCount, int cCount, String fullFormula) {
-        Button correct_button = (Button) findViewById(R.id.option1);
-        Button wrong_button1 = (Button) findViewById(R.id.option2);
-        Button wrong_button2 = (Button) findViewById(R.id.option3);
-        Button wrong_button3 = (Button) findViewById(R.id.option4);
+        correct_button = (Button) findViewById(R.id.option1);
+        wrong_button1 = (Button) findViewById(R.id.option2);
+        wrong_button2 = (Button) findViewById(R.id.option3);
+        wrong_button3 = (Button) findViewById(R.id.option4);
         //puts the answer in one of the buttons
         int correctButton = (int) Math.floor(Math.random() * (4 - 1 + 1) + 1);
         if (correctButton == 1) {
@@ -216,7 +219,7 @@ public class game extends AppCompatActivity {
             }
             if (correctButton != 4) {
                 TextView textView4 = (TextView) findViewById(R.id.option4);
-                int a4 = ans - 4;
+                int a4 = ans - 2;
                 textView4.setText("" + a4);
             }
         }
@@ -250,43 +253,60 @@ public class game extends AppCompatActivity {
                 intent.putExtra("fullFormula", fullFormula);
                 intent.putExtra("rCount", rCount);
                 intent.putExtra("cCount", cCount);
+                intent.putExtra("gameMode", gameMode);
+                intent.putExtra("gameLength", gameLength);
                 startActivity(intent);
             }
         });
 
+
         wrong_button1.setOnClickListener(new View.OnClickListener() {
+            int buttonNum = 1;
+
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), wrong.class);
-                intent.putExtra("fullFormula", fullFormula);
-                intent.putExtra("rCount", rCount);
-                intent.putExtra("cCount", cCount);
-                startActivity(intent);
+                wrongButton(v, buttonNum);
             }
         });
 
         wrong_button2.setOnClickListener(new View.OnClickListener() {
+            int buttonNum = 2;
+
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), wrong.class);
-                intent.putExtra("fullFormula", fullFormula);
-                intent.putExtra("rCount", rCount);
-                intent.putExtra("cCount", cCount);
-                startActivity(intent);
+                wrongButton(v, buttonNum);
             }
         });
 
         wrong_button3.setOnClickListener(new View.OnClickListener() {
+            int buttonNum = 3;
+
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), wrong.class);
-                intent.putExtra("fullFormula", fullFormula);
-                intent.putExtra("rCount", rCount);
-                intent.putExtra("cCount", cCount);
-                startActivity(intent);
+               wrongButton(v, buttonNum);
             }
         });
 
+    }
+
+    public void wrongButton(View v, int button) {
+        if (gameMode.equals("Test Mode")) {
+            Intent intent = new Intent(v.getContext(), wrong.class);
+            intent.putExtra("fullFormula", fullFormula);
+            intent.putExtra("rCount", rCount);
+            intent.putExtra("cCount", cCount);
+            intent.putExtra("gameMode", gameMode);
+            intent.putExtra("gameLength", gameLength);
+            startActivity(intent);
+        }
+        else if (gameMode.equals("Practice Mode")) {
+            if (button == 1)
+                wrong_button1.setBackgroundColor(Color.LTGRAY);
+            if (button == 2)
+                wrong_button2.setBackgroundColor(Color.LTGRAY);
+            if (button == 3)
+                wrong_button3.setBackgroundColor(Color.LTGRAY);
+        }
     }
 
 

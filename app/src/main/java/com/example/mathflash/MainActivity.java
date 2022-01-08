@@ -13,8 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements MainDialogListener{
     private Button play;
-    private CharSequence gMode;
-    private CharSequence gLength;
+    public String gMode, gLength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements MainDialogListene
 
     int rCount = 1;
     int cCount = 0;
-    public void startGame(View v, CharSequence gameMode, CharSequence gameLength) {
+    public void startGame(View v, String gameMode, String gameLength) {
 
         Intent intent = new Intent(v.getContext(), game.class);
         intent.putExtra("rCount", rCount);
@@ -60,8 +59,8 @@ public class MainActivity extends AppCompatActivity implements MainDialogListene
     @Override
     public void submittedInfo(View v, CharSequence gameMode, CharSequence gameLength) { ;
         //Toast.makeText(this, gameMode + "  " + gameLength, Toast.LENGTH_SHORT).show();
-        //gMode = gameMode;
-        //gLength = gameLength;
-        startGame(v, gameMode, gameLength);
+        gMode = gameMode.toString();
+        gLength = gameLength.toString();
+        startGame(v, gMode, gLength);
     }
 }

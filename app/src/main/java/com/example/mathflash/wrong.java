@@ -8,8 +8,9 @@ import android.os.Handler;
 import android.widget.TextView;
 
 public class wrong extends AppCompatActivity {
-
-    TextView wTextview;
+    public TextView formulaTV;
+    public String gameMode, gameLength;
+    public int rCount, cCount, maxRound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,13 +18,22 @@ public class wrong extends AppCompatActivity {
         setContentView(R.layout.activity_wrong);
 
         Intent mIntent = getIntent();
-        int rCount = mIntent.getIntExtra("rCount", 0);
-        int cCount = mIntent.getIntExtra("cCount", 0);
+        rCount = mIntent.getIntExtra("rCount", 0);
+        cCount = mIntent.getIntExtra("cCount", 0);
+        gameMode = mIntent.getStringExtra("gameMode");
+        gameLength = mIntent.getStringExtra("gameLength");
 
         rCount++;
 
-        wTextview = (TextView)findViewById(R.id.wfullFormula);
-        wTextview.setText(getIntent().getStringExtra("fullFormula"));
+        if (gameLength.equals("10 Rounds"))
+            maxRound = 10;
+        if (gameLength.equals("20 Rounds"))
+            maxRound = 20;
+        if (gameLength.equals("30 Rounds"))
+            maxRound = 30;
+
+        formulaTV = (TextView)findViewById(R.id.wfullFormula);
+        formulaTV.setText(getIntent().getStringExtra("fullFormula"));
 
         final Handler h = new Handler();
         int finalRCount = rCount;
@@ -31,12 +41,14 @@ public class wrong extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent;
-                if (finalRCount == 31)
+                if (finalRCount == (maxRound+1))
                     intent = new Intent(getApplicationContext(), end_screen.class);
                 else
                     intent = new Intent(getApplicationContext(), game.class);
                 intent.putExtra("rCount", finalRCount);
                 intent.putExtra("cCount", cCount);
+                intent.putExtra("gameMode", gameMode);
+                intent.putExtra("gameLength", gameLength);
                 startActivity(intent);
             }
 

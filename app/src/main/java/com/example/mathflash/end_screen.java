@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.TextView;
 
 public class end_screen extends AppCompatActivity {
-    TextView score;
-    TextView percent;
+    private TextView score, percent;
+    public String gameMode, gameLength;
+    public int rCount, cCount;
 
 
     @Override
@@ -18,11 +19,17 @@ public class end_screen extends AppCompatActivity {
         setContentView(R.layout.activity_end_screen);
 
         Intent mIntent = getIntent();
-        int cCount = mIntent.getIntExtra("cCount", 0);
-        float finPer = ((float)cCount/30)*100;
+        cCount = mIntent.getIntExtra("cCount", 0);
+        rCount = mIntent.getIntExtra("rCount", 0);
+        gameMode = mIntent.getStringExtra("gameMode");
+        gameLength = mIntent.getStringExtra("gameLength");
+
+        rCount--;
+
+        float finPer = ((float)cCount/rCount)*100;
 
         score = (TextView)findViewById(R.id.score);
-        score.setText(cCount+"/30");
+        score.setText(cCount+"/"+rCount);
         percent = (TextView)findViewById(R.id.percent);
         percent.setText((int)finPer+"%");
 
@@ -33,12 +40,16 @@ public class end_screen extends AppCompatActivity {
         startActivity(intent);
     }
 
-    int rCount = 1;
-    int cCount = 0;
+
     public void startGame(View v) {
+        rCount = 1;
+        cCount = 0;
+
         Intent intent = new Intent(v.getContext(), game.class);
         intent.putExtra("rCount", rCount);
         intent.putExtra("cCount", cCount);
+        intent.putExtra("gameMode", gameMode);
+        intent.putExtra("gameLength", gameLength);
         startActivity(intent);
     }
 }
