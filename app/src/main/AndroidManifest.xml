@@ -4,14 +4,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/refine_math_icon"
+        android:icon="@mipmap/refine_icon_v1"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/refine_math_icon"
+        android:roundIcon="@mipmap/refine_icon_v1"
         android:supportsRtl="true"
         android:theme="@style/Theme.MathFlash">
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/settings"></activity>
+            android:label="@string/settings"/>
         <activity android:name=".end_screen" />
         <activity android:name=".wrong" />
         <activity android:name=".correct" />
