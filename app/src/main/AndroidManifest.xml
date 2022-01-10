@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/refine_icon_v1"
+        android:icon="@mipmap/refine_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/refine_icon_v1"
+        android:roundIcon="@mipmap/refine_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MathFlash">
         <activity
