@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MathFlash</string>
+    <string name="app_name">Refine Math</string>
     <string name="mathFormula">90 + 10</string>
     <string name="title_activity_main2">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
