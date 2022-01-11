@@ -43,11 +43,13 @@ public class correct extends AppCompatActivity {
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent;
-                if (finalRCount == (maxRound+1))
-                    intent = new Intent(getApplicationContext(), end_screen.class);
-                else
-                    intent = new Intent(getApplicationContext(), game.class);
+                Intent intent = new Intent(getApplicationContext(), game.class);
+                if (finalRCount == (maxRound+1)) {
+                    if (gameMode.equals("Test Mode"))
+                        intent = new Intent(getApplicationContext(), end_screen.class);
+                    else if (gameMode.equals("Practice Mode"))
+                        intent = new Intent(getApplicationContext(), practice_end_screen.class);
+                }
                 intent.putExtra("rCount", finalRCount);
                 intent.putExtra("cCount", finalCCount);
                 intent.putExtra("gameMode", gameMode);

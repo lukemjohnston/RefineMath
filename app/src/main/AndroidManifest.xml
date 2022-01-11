@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/refine_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MathFlash">
+        <activity android:name=".practice_end_screen"></activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/settings"/>
+            android:label="@string/settings" />
         <activity android:name=".end_screen" />
         <activity android:name=".wrong" />
         <activity android:name=".correct" />
