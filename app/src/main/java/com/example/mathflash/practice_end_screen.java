@@ -21,6 +21,7 @@ public class practice_end_screen extends AppCompatActivity {
     public void returnMain(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out );
     }
 
     public void startGame(View v) {
@@ -33,5 +34,6 @@ public class practice_end_screen extends AppCompatActivity {
         intent.putExtra("gameMode", gameMode);
         intent.putExtra("gameLength", gameLength);
         startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out );
     }
 }

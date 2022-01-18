@@ -256,6 +256,7 @@ public class game extends AppCompatActivity {
                 intent.putExtra("gameMode", gameMode);
                 intent.putExtra("gameLength", gameLength);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out );
             }
         });
 
@@ -298,6 +299,7 @@ public class game extends AppCompatActivity {
             intent.putExtra("gameMode", gameMode);
             intent.putExtra("gameLength", gameLength);
             startActivity(intent);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out );
         }
         else if (gameMode.equals("Practice Mode")) {
             if (button == 1)
@@ -307,6 +309,12 @@ public class game extends AppCompatActivity {
             if (button == 3)
                 wrong_button3.setBackgroundColor(Color.LTGRAY);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        View v = null;
+        returnMain(v);
     }
 
 
@@ -331,5 +339,6 @@ public class game extends AppCompatActivity {
     public void returnMain(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out );
     }
 }

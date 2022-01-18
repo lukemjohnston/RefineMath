@@ -38,15 +38,13 @@ public class MainActivity extends AppCompatActivity implements MainDialogListene
     int rCount = 1;
     int cCount = 0;
     public void startGame(View v, String gameMode, String gameLength) {
-
         Intent intent = new Intent(v.getContext(), game.class);
         intent.putExtra("rCount", rCount);
         intent.putExtra("cCount", cCount);
-
         intent.putExtra("gameMode", gameMode);
         intent.putExtra("gameLength", gameLength);
-
         startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out );
     }
 
     public void openSettings(View v) {
@@ -54,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements MainDialogListene
         intent.putExtra("rCount", rCount);
         intent.putExtra("cCount", cCount);
         startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out );
     }
 
     @Override
@@ -62,5 +61,17 @@ public class MainActivity extends AppCompatActivity implements MainDialogListene
         gMode = gameMode.toString();
         gLength = gameLength.toString();
         startGame(v, gMode, gLength);
+    }
+
+    @Override
+    public void onBackPressed() {
+        View v = null;
+        returnMain(v);
+    }
+
+    public void returnMain(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out );
     }
 }

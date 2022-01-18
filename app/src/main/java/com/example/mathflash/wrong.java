@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.TextView;
 
 public class wrong extends AppCompatActivity {
@@ -50,8 +51,15 @@ public class wrong extends AppCompatActivity {
                 intent.putExtra("gameMode", gameMode);
                 intent.putExtra("gameLength", gameLength);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out );
             }
 
         }, 1500);
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
 }
